@@ -1,4 +1,4 @@
-# set-list
+# legends of the stage
 
 ## Project setup
 ```
