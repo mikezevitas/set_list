@@ -1,0 +1,24 @@
+// Main Nav
+
+.v-app-bar.v-toolbar {
+    background-color: $primary-color;
+    color: $secondary-text;
+
+    .links {
+      text-decoration: none;
+      color: $secondary-text;
+    }
+
+    
+  }
+
+
+
+
+  // Side Nav
+
+
+  .v-navigation-drawer {
+    background-color: $secondary-color;
+    color: $secondary-text
+  }

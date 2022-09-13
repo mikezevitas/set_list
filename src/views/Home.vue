@@ -2,7 +2,7 @@
   <div class="home">
      <router-link to="/add-song"> Add a New Song </router-link>
     <li v-for="(song, index) in songData" v-bind:key="index">
-  {{ song.id }}
+  {{ song.id }} | {{song.title}} | {{song.song_lyrics}}
     </li>
   </div>
 </template>

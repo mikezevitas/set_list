@@ -1,7 +1,12 @@
+@use 'vuetify' with (
+  $utilities: false,
+  $color-pack: false,
+);
 
 @import '_global.scss';
 @import '_vars.scss';
 
 
+@import '_navigation';
 @import '_tables';
 @import '_forms';

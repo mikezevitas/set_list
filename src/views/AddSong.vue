@@ -1,28 +1,72 @@
 <template>
-    <div>
-        <label>Title</label>
-        <input type="text" v-model="form.title"/>
+    
+     <v-form >
+    <v-container>
+      <v-row>
+        <v-col
+          cols="12"
+          md="4"
+        >
+          <v-text-field
+            v-model="form.title"
+            label="Song Title"
+            required
+          ></v-text-field>
+        </v-col>
 
-        <label>Key</label>
-        <input type="text" v-model="form.key"/>
+        <v-col
+          cols="12"
+          md="4"
+        >
+          <v-text-field
+            v-model="form.band"
+            label="Band Name"
+            required
+          ></v-text-field>
+        </v-col>
 
-        <label>Lyrics</label>
-        <textarea type="text" v-model="form.lyrics"></textarea>
+        <v-col
+          cols="12"
+          md="4"
+        >
+         <v-text-field
+            v-model="form.key"
+            label="Key Signiture"
+          ></v-text-field>
+        </v-col>
+        <v-col cols="12">
+          <light-editor v-model="form.song_lyrics" />
 
-        <Buttons v-on:click="submit()" label="Submit me" :primary="false" />
-    </div>
+
+        </v-col>
+        <v-col cols="1">
+            <v-btn 
+            v-on:click="submit()" 
+            > Submit </v-btn>
+        </v-col>
+        <v-col cols="1">
+            <v-btn 
+            @click="$router.go(-1)"
+      outlined
+      color="white"
+            > Cancel </v-btn>
+        </v-col>
+      </v-row>
+    </v-container>
+  </v-form>
 </template>
 
 <script>
 import axios from '@/axios'
-import Buttons from "@/components/Buttons.vue"
 export default {
     data(){
         return {
             form: {
                 title: '',
                 key: '',
-                lyrics: ''
+                band: '',
+                song_lyrics: '',
+                             
             }, 
         }
     },
@@ -31,7 +75,8 @@ export default {
         submit(){
             axios.post('items/songs', this.form)
                  .then(() => {
-                    this.$router.push('/');
+                  console.log(this.form);
+                    this.$router.push('/songs/');
                     })
                     .catch(error => {
                     this.errorMessage = error.message;
@@ -40,7 +85,6 @@ export default {
         }
     },
     components: {
-        Buttons
-    }
+}
 }
 </script>

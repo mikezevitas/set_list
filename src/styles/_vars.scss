@@ -2,3 +2,12 @@ $browser-context: 16;
 @function rem($pixels, $context: $browser-context) {
   @return #{$pixels/$context}rem;
 }
+
+
+$primary-color: #274C77;
+$secondary-color: #6096BA;
+$light-primary-color: #A3CEF1;
+$dark-accent: #8B8C89;
+$light-accent: #E7ECEF;
+$primary-text: #2b2828;
+$secondary-text: #f0ebeb;

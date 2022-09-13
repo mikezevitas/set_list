@@ -22,7 +22,19 @@ const routes = [
     path: '/add-song',
     name: 'Add Song',
     component: () => import(/* webpackChunkName: "about" */ '../views/AddSong.vue')
-  }
+  },
+  {
+    path: '/edit-song/:id',
+    name: 'Edit Song',
+    component: () => import(/* webpackChunkName: "about" */ '../views/EditSong.vue')
+  },
+  {
+    path: '/live/:id',
+    name: 'Live View',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Live.vue')
+
+  },
+
 ]
 
 const router = createRouter({
