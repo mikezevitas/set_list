@@ -14,24 +14,29 @@ const routes = [
     component: SongList
   },
   {
-    path: '/about',
-    name: 'About',
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/band-members',
+    name: 'Band Members',
+    component: () => import('../views/BandMembers.vue')
+  },
+  {
+    path: '/set-list',
+    name: 'Set List',
+    component: () => import( '../views/SetList.vue')
   },
   {
     path: '/add-song',
     name: 'Add Song',
-    component: () => import(/* webpackChunkName: "about" */ '../views/AddSong.vue')
+    component: () => import( '../views/AddSong.vue')
   },
   {
     path: '/edit-song/:id',
     name: 'Edit Song',
-    component: () => import(/* webpackChunkName: "about" */ '../views/EditSong.vue')
+    component: () => import( '../views/EditSong.vue')
   },
   {
     path: '/live/:id',
     name: 'Live View',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Live.vue')
+    component: () => import( '../views/Live.vue')
 
   },
 

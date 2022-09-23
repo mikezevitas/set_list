@@ -2,9 +2,8 @@
   <v-app>
     <v-layout>
     <Navigation />
-    <SideNav />
     
-    <v-main>
+    <v-main  style="margin: 30px;">
       <router-view/>
     </v-main>
     
@@ -14,7 +13,6 @@
 
 <script>
 import Navigation from "./components/Navigation.vue";
-import SideNav from "./components/SideNav.vue";
 
 export default {
   name: 'App',
@@ -24,7 +22,6 @@ export default {
   }),
   components: {
     Navigation,
-    SideNav
 }
 }
 </script>

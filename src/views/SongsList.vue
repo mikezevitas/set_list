@@ -13,6 +13,8 @@
          <th class="text-left" @click="sort('Band')">
           Band
         </th>
+          <th class="text-left" @click="sort('Singer')"> Lead Singer</th>
+        <th>Live</th>
         <th>Edit</th>
         <th>Delete</th>
       </tr>
@@ -24,15 +26,51 @@
         <td>{{ song.id }}</td>
         <td>{{ song.title }}</td>
         <td>{{ song.band }}</td>
-        <td>
-           <router-link  :to="{path: '/live/' + song.id}">   preform </router-link>
+        <td>{{ song.lead_singer }}</td>
+        <td >
+           <router-link  :to="{path: '/live/' + song.id}" style="text-decoration: none; color: inherit;">   <v-icon icon="mdi-microphone-variant" /> </router-link>
            
         </td>
         <td>
-           <router-link  :to="{path: '/edit-song/' + song.id}">   Edit </router-link>
+           <router-link  :to="{path: '/edit-song/' + song.id}" style="text-decoration: none; color: inherit;">  <v-icon icon="mdi-pencil" /> </router-link>
            
         </td>
-        <td v-on:click="deleteSongData(song.id, index)"> Trash</td>
+        <!-- <td v-on:click="deleteSongData(song.id, index)" style="cursor:pointer"> <v-icon icon="mdi-delete" /></td>
+         -->
+         <td>
+            <v-dialog
+            v-model="dialog[song.id]"
+            persistent>
+            <template v-slot:activator="{ props }">
+
+                <v-icon icon="mdi-delete"  v-bind="props" />
+              <!-- <v-btn v-bind="props" > {{song.id}}</v-btn> -->
+            </template>
+            <v-card class="ma-4 pa-4 pt-7">
+        <v-card-title class="text-h6 text-center">
+            Are you sure you want to delete this song?
+        </v-card-title>
+        <v-card-actions >
+          <v-spacer></v-spacer>
+          <v-btn
+            text
+            @click="dialog = false"
+            v-on:click="deleteSongData(song.id, index)"
+            
+          >
+           Yes
+          </v-btn>
+          <v-btn
+          
+            text
+            @click="dialog = false"
+          >
+            No
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+        </v-dialog>
+        </td>
       </tr>
     </tbody>
   </v-table>
@@ -51,12 +89,15 @@ export default {
     return {
       songData: [],
       currentSort:'title',
-      currentSortDir:'asc'
+      currentSortDir:'asc',
+      dialog: {},
+
+      // leadData: []
     }
   },
 methods : {
   async fetchApi() {
-     axios.get('/items/songs/')
+     axios.get('items/songs/')
     .then((songs) => {
       this.songData = songs.data.data
       console.log(this.songData)
@@ -67,16 +108,31 @@ methods : {
     });
   },
 
-   deleteSongData: function(id, index) {
-  if(confirm("Are you sure you want to Delete this song?")){
+   deleteSongData: function(id) {
+
       axios.delete('/items/songs/' + id)
       .then(() => {
-      window.location.reload();
-       this.songs.data.splice(index, 1);
+        console.log(id)
+        // this.allSongs.data.slice(index);
+        window.location.reload();
 
       });
-  }
+  
     },
+    // bandMemberID(id){
+    //           this.dialog=true;
+    //           this.bandMemberId=id;
+    //        },
+  //   getLead(id) {
+  //    axios.get('items/band_members/' + id)
+  //   .then((lead) => {
+  //     this.leadData = lead.data.data
+  //     })
+  //   .catch(error => {
+  //     this.errorMessage = error.message;
+  //     console.error("There was an error!", error);
+  //   });
+  // },
 
 
     sort:function(s) {
@@ -103,6 +159,14 @@ computed:{
 
 mounted() {
   this.fetchApi()
+  // this.getLead()
   }
 }
 </script>
+
+
+<style lang="scss">
+.v-overlay__scrim {
+background-color: #8b8c8998;
+}
+</style>

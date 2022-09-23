@@ -17,6 +17,11 @@
             v-model="singleSongData.key"
             label="Key Signiture"
           ></v-text-field>
+          <v-text-field
+            v-model="singleSongData.key"
+            label="Key Signiture"
+          ></v-text-field>
+
           <!-- <v-text-field
             v-model="singleSongData.song_lyrics"
             label="Lyrics"

@@ -7,12 +7,10 @@
 
 <script>
 
-import Wysiwyg from '@/components/Wysiwyg.vue'
 
 
 export default {
   components: {
-    Wysiwyg
   }
 }
 </script>

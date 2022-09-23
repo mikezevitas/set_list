@@ -19,6 +19,11 @@
 
 
   .v-navigation-drawer {
-    background-color: $secondary-color;
-    color: $secondary-text
+    background-color: $light-accent;
+    color: $secondary-text;
+
+    .links {
+      text-decoration: none;
+      color: $primary-text;
+    }
   }

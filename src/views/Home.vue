@@ -4,6 +4,9 @@
     <li v-for="(song, index) in songData" v-bind:key="index">
   {{ song.id }} | {{song.title}} | {{song.song_lyrics}}
     </li>
+
+
+
   </div>
 </template>
 
@@ -19,6 +22,7 @@ export default {
   data() {
     return {
       songData: [],
+      dialog: false
     }
   },
 
